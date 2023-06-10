@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.selectedproducts.SelectedCategoryFragment">
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:layout_width="wrap_content"
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:indicatorColor="@color/themeColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.google.android.material.progressindicator.CircularProgressIndicator>
+
+    <TextView
+        android:id="@+id/textCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_bold"
+        android:textColor="@color/black"
+        android:layout_margin="15dp"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textCategory">
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_height="wrap_content">
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                app:strokeColor="@color/white"
+                android:text="Ascending"
+                app:rippleColor="@color/themeColor"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:fontFamily="@font/inter_bold"
+                android:drawableLeft="@drawable/baseline_keyboard_double_arrow_down_24"
+                android:backgroundTint="@color/black"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_height="wrap_content">
+
+            </com.google.android.material.button.MaterialButton>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                app:strokeColor="@color/white"
+                android:layout_weight="1"
+                app:rippleColor="@color/themeColor"
+                android:text="Filter"
+                android:drawableLeft="@drawable/baseline_filter_alt_24"
+                android:textColor="@color/white"
+                android:fontFamily="@font/inter_bold"
+                android:paddingTop="20dp"
+                android:layout_gravity="center"
+                android:gravity="start|center_vertical"
+                android:textSize="13sp"
+                android:paddingBottom="20dp"
+                android:backgroundTint="@color/black"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_height="wrap_content">
+
+            </com.google.android.material.button.MaterialButton>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="10dp"
+            android:id="@+id/rvProducts"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:spanCount="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

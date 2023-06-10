@@ -1,4 +1,4 @@
-package com.bashirli.bootcamp8iyun.ui.home
+package com.bashirli.bootcamp8iyun.ui.selectedproducts
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,30 +6,39 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.bashirli.bootcamp8iyun.R
 import com.bashirli.bootcamp8iyun.databinding.FragmentHomeBinding
+import com.bashirli.bootcamp8iyun.databinding.FragmentSelectedCategoryBinding
 import com.bashirli.bootcamp8iyun.modul.category.CategoryResponse
 import com.bashirli.bootcamp8iyun.modul.product.ProductResponse
 import com.bashirli.bootcamp8iyun.service.ApiUtils
+import com.bashirli.bootcamp8iyun.ui.home.CategoriesAdapter
+import com.bashirli.bootcamp8iyun.ui.home.ProductsAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeFragment : Fragment() {
-   private var _binding:FragmentHomeBinding?=null
+class SelectedCategoryFragment : Fragment() {
+    private var _binding: FragmentSelectedCategoryBinding?=null
     private val binding get()=_binding!!
 
-    private val service=ApiUtils.getApi()
-    private val categoriesAdapter=CategoriesAdapter()
-    private val productsAdapter=ProductsAdapter()
+    private val args by navArgs<SelectedCategoryFragmentArgs>()
+
+    private lateinit var _categoryName:String
+    private var _categoryId=0
+
+    private val service= ApiUtils.getApi()
+    private val adapter=SelectedCategoryAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding= FragmentHomeBinding.inflate(inflater,container,false)
+        _binding= FragmentSelectedCategoryBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -39,64 +48,43 @@ class HomeFragment : Fragment() {
     }
 
     private fun setup(){
-        setRV()
+        _categoryId=args.categoryId
+        _categoryName=args.categoryName
 
-        service.getCategories().enqueue(object: Callback<CategoryResponse>{
-            override fun onResponse(
-                call: Call<CategoryResponse>,
-                response: Response<CategoryResponse>,
-            ) {
-                if(response.isSuccessful){
-                    response.body()?.let {
-                        categoriesAdapter.updateList(it)
-                    }
-                }else{
-                    Toast.makeText(requireContext(),"Error",Toast.LENGTH_SHORT).show()
-                }
-            }
+        with(binding){
+            rvProducts.adapter=adapter
+            textCategory.text=_categoryName
+            progressBar.visibility=View.VISIBLE
+        }
 
-            override fun onFailure(call: Call<CategoryResponse>, t: Throwable) {
-                Toast.makeText(requireContext(),t.localizedMessage,Toast.LENGTH_SHORT).show()
-            }
 
-        })
-
-        val offset=0
-        val limit=10
-
-        service.getProductsWithLimit(limit, offset).enqueue(object:Callback<ProductResponse>{
+        val callback=service.getCategoryProducts(_categoryId)
+        callback.enqueue(object:Callback<ProductResponse>{
             override fun onResponse(
                 call: Call<ProductResponse>,
                 response: Response<ProductResponse>,
             ) {
+                binding.progressBar.visibility=View.GONE
                 if(response.isSuccessful){
                     response.body()?.let {
-                        productsAdapter.updateList(it)
+                        adapter.updateList(it)
                     }
                 }else{
+
                     Toast.makeText(requireContext(),"Error",Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
+                binding.progressBar.visibility=View.GONE
                 Toast.makeText(requireContext(),t.localizedMessage,Toast.LENGTH_SHORT).show()
             }
 
         })
 
+
     }
 
-    private fun setRV(){
-        with(binding){
-            rvCategories.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-            rvCategories.adapter=categoriesAdapter
-
-            rvProducts.layoutManager=StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
-            rvProducts.adapter=productsAdapter
-
-
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()

@@ -6,7 +6,7 @@
     android:title="Home">
 </item>
     <item
-        android:id="@+id/action_category"
+        android:id="@+id/categoryFragment"
         android:icon="@drawable/baseline_category_24"
         android:title="Category">
     </item>

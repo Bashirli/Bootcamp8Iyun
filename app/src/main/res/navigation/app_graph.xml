@@ -15,4 +15,25 @@
         android:name="com.bashirli.bootcamp8iyun.ui.favorites.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.bashirli.bootcamp8iyun.ui.category.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_categoryFragment_to_selectedCategoryFragment2"
+            app:destination="@id/selectedCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectedCategoryFragment"
+        android:name="com.bashirli.bootcamp8iyun.ui.selectedproducts.SelectedCategoryFragment"
+        android:label="fragment_selected_category"
+        tools:layout="@layout/fragment_selected_category" >
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+        <argument
+            android:name="categoryId"
+            app:argType="integer" />
+    </fragment>
 </navigation>
