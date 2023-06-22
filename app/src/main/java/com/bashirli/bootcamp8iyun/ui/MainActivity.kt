@@ -2,6 +2,7 @@ package com.bashirli.bootcamp8iyun.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.bashirli.bootcamp8iyun.R
@@ -29,7 +30,22 @@ class MainActivity : AppCompatActivity() {
             bottomNavigationView.setupWithNavController(navController)
             //  NavigationUI.setupWithNavController(bottomNavigationView,navController)  --> eynidir
 
+            navController.addOnDestinationChangedListener{_,destination,_->
+           with(binding){
+               when(destination.id){
+                   R.id.twiceFragment->{bottomNavigationView.visibility = View.GONE}
+                   R.id.loginFragment->{bottomNavigationView.visibility = View.GONE}
+                   else->{
+                       if(bottomNavigationView.visibility==View.GONE){
+                           bottomNavigationView.visibility=View.VISIBLE
+                       }
+                   }
 
+
+               }
+           }
+
+            }
 
         }
     }

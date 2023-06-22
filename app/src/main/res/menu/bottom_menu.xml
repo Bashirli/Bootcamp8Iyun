@@ -21,7 +21,7 @@
         android:title="Favorites">
     </item>
     <item
-        android:id="@+id/action_profile"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/baseline_person_pin_24"
         android:title="Profile">
     </item>

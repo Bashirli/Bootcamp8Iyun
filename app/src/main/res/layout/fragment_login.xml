@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/themeColor"
+    android:layout_height="match_parent"
+    tools:context=".ui.LoginFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/e_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        </ImageView>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.11">
+
+        </androidx.constraintlayout.widget.Guideline>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/e_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="75dp"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:text="Welcome, glad to see you"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2">
+
+        </TextView>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.29">
+
+
+        </androidx.constraintlayout.widget.Guideline>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline5">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                app:boxCornerRadiusTopStart="24dp"
+                app:boxCornerRadiusTopEnd="24dp"
+                app:boxCornerRadiusBottomStart="24dp"
+                app:boxCornerRadiusBottomEnd="24dp"
+                app:hintTextColor="@color/white"
+                android:textColorHint="@color/white"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="1dp"
+                app:boxStrokeColor="@color/white"
+                app:endIconTint="@color/white"
+                app:endIconMode="clear_text"
+                app:boxBackgroundColor="@color/black_b5"
+                android:layout_marginHorizontal="50dp"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:paddingVertical="22dp"
+                    android:hint="Email"
+                    android:id="@+id/editEmail"
+                    android:inputType="textEmailAddress"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                app:boxCornerRadiusTopStart="24dp"
+                app:boxCornerRadiusTopEnd="24dp"
+                app:boxCornerRadiusBottomStart="24dp"
+                app:boxCornerRadiusBottomEnd="24dp"
+                android:layout_marginTop="20dp"
+                app:hintTextColor="@color/white"
+                android:textColorHint="@color/white"
+                app:endIconMode="password_toggle"
+                app:boxStrokeWidth="0dp"
+                app:endIconTint="@color/white"
+                app:boxStrokeWidthFocused="1dp"
+                app:boxStrokeColor="@color/white"
+                app:boxBackgroundColor="@color/black_b5"
+                android:layout_marginHorizontal="50dp"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:paddingVertical="22dp"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:id="@+id/editPass"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/black"
+                android:text="Sign in"
+                android:id="@+id/buttonSignIn"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:cornerRadius="24dp"
+                app:rippleColor="@color/white"
+                android:paddingVertical="20dp"
+                android:layout_height="wrap_content">
+
+            </com.google.android.material.button.MaterialButton>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Forgot pass?"
+                android:textSize="12sp"
+                app:rippleColor="@color/black"
+                android:textColor="@color/black"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_height="wrap_content">
+
+            </com.google.android.material.button.MaterialButton>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Or"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_marginTop="17dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/inter_bold"
+                android:layout_height="wrap_content">
+
+            </TextView>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="21dp"
+                android:backgroundTint="@color/black"
+                android:text="Continue with Google"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:icon="@drawable/google_ico"
+                app:iconGravity="textStart"
+
+                android:fontFamily="@font/inter_regular"
+                app:cornerRadius="24dp"
+                app:rippleColor="@color/white"
+                android:paddingVertical="20dp"
+                android:layout_height="wrap_content">
+
+            </com.google.android.material.button.MaterialButton>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="11dp"
+                android:backgroundTint="@color/black"
+                android:fontFamily="@font/inter_regular"
+                app:icon="@drawable/apple_ico"
+                app:iconGravity="textStart"
+                android:text="Continue with Apple ID"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:cornerRadius="24dp"
+                app:rippleColor="@color/white"
+                android:paddingVertical="20dp"
+                android:layout_height="wrap_content">
+
+            </com.google.android.material.button.MaterialButton>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                style="@style/Widget.Material3.Button.IconButton"
+                app:icon="@drawable/baseline_arrow_back_ios_new_24"
+                android:backgroundTint="@color/black"
+                app:iconTint="@color/white"
+                android:id="@+id/buttonGoBack"
+                app:iconSize="35dp"
+                app:rippleColor="@color/themeColor"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginVertical="25dp"
+                android:layout_height="wrap_content">
+
+            </com.google.android.material.button.MaterialButton>
+
+        </LinearLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</ScrollView>
